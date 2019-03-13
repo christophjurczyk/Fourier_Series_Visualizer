@@ -13,7 +13,7 @@ On macOS Touch Bar support is available.
 You can open the app as well in your brower with this [link](https://christophjurczyk.github.io/Fourier_Series_Visualizer/fourierSeries.html).
 
 ## Installation
-To run the app, simply download the desired release for your operating system. Unzip the file and run the following files depending on your OS:
+To run the app, simply download the [desired release](https://github.com/christophjurczyk/Fourier_Series_Visualizer/releases) for your operating system. Unzip the file and run the following files depending on your OS:
 * Windows: fourier_series_app.exe
 * macOS: fourier_series_app.app
 * Linux: fourier_series_app
