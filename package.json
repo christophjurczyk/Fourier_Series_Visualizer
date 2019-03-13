@@ -1,0 +1,21 @@
+{
+  "name": "fourier_series_app",
+  "version": "1.0.0",
+  "description": "App to visualize fourier series.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . fourier_series_app --overwrite --platform=darwin --arch=x64 --icon=src/icon/fourier_series_icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . fourier_series_app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/icon/fourier_series_icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"FourierSeriesApp\"",
+    "package-linux": "electron-packager . fourier_series_app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/icon/fourier_series_icon_512x512.png --prune=true --out=release-builds"
+  },
+  "author": "Christoph Jurczyk",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^4.0.8",
+    "electron-packager": "^13.1.1"
+  },
+  "dependencies": {
+    "bootstrap-slider": "^10.6.1"
+  }
+}

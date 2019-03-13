@@ -1,0 +1,5 @@
+node_modules/
+*.DS_Store
+release-builds/fourier_series_app-darwin-x64/
+release-builds/fourier_series_app-linux-x64/
+release-builds/fourier_series_app-win32-ia32/

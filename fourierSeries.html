@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <title>Fourier Series Visualizer</title>
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+  <link rel="stylesheet" href="./src/css/bootstrap.min.css">
+
+  <script src="./src/js/jquery-3.3.1.min.js"></script>
+  <script src="./src/js/jquery-3.3.1.slim.min.js"></script>
+
+  <script src="./src/js/popper.min.js"></script>
+  <script src="./src/js/bootstrap.min.js"></script>
+
+
+  <script src="./src/p5.min.js"></script>
+  <script src="./src/p5.dom.min.js"></script>
+
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+  </style>
+
+</head>
+
+<body style="background-color:#4393a5;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand">Fourier Series Visualizer</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a href="https://github.com/christophjurczyk/" target="_blank">by Christoph Jurczyk</a>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+
+
+  <div class="parent">
+    <div id="sketch-holder"></div>
+
+
+    <table class="table">
+      <thead>
+        <tr class="table-light">
+          <th scope="col">Speed:</th>
+          <th scope="col" style="width: 5%"></th>
+          <th scope="col">Number of Iterations:</th>
+          <th scope="col" style="width: 5%"></th>
+          <th scope="col">Waveform:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-light">
+          <td>
+            <p class="speed"></p>
+            <input id="slider_speed" type="range" min="0" max="100" step="1" value="50" style="width: 100%">
+          </td>
+          <td class="align-middle">
+            <label id="label_speed" for="slider_speed">0.0000</label>
+          </td>
+          <td>
+            <p class="number_of_iterations"></p>
+            <input id="slider_itr" type="range" min="1" max="75" step="1" value="5" style="width: 100%">
+          </td>
+          <td class="align-middle">
+            <label id="label_itr" for="slider_speed">0</label>
+          </td>
+          <td><select class="form-control form-control-lg" id="presets">
+              <option value="square">Square</option>
+              <option value="sawtooth">Sawtooth</option>
+              <option value="triangle">Triangle</option>
+              <option value="clausen">Clausen</option>
+              <option value="custom">Custom</option>
+            </select></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <div class="accordion" id="accordionExample">
+
+      <div class="card">
+        <div class="card-header" id="heading_custom_wave">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+              data-target="#collapase_custom_wave" aria-expanded="false" aria-controls="collapase_custom_wave">
+              Custom Waveform
+            </button>
+          </h2>
+        </div>
+        <div id="collapase_custom_wave" class="collapse" aria-labelledby="heading_custom_wave"
+          data-parent="#accordionExample">
+          <div class="card-body">
+            <!-- Custom Equation Section -->
+
+            <div class="text-center">
+              <img id="equation_img" src="./src/media/xt_init0.svg" class="img-fluid" alt="Equation missing...">
+            </div>
+
+
+
+            <form id="Series">
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="numerator">Numerator <font face="Symbol">a</font>:</label>
+                  <input type="text" name="numerator" id="numerator" class="form-control" value="4">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="denominator">Denominator <font face="Symbol">b</font>:</label>
+                  <input type="text" name="denominator" id="denominator" class="form-control" value="PI * ((2*n) + 1)">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="coefficient">Coefficient <font face="Symbol">d</font>:</label>
+                  <input type="text" name="coefficient" id="coefficient" class="form-control" value="((2*n) + 1)">
+                </div>
+                <div class="form-group">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="series_1" id="series_1">
+                    <label class="form-check-label" for="series_1">Start at 1?</label>
+                  </div>
+                </div>
+              </div>
+              <input id="submit" type="button" class="btn btn-primary" value="Apply">
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="card-header" id="heading_display_settings">
+          <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+              data-target="#collapseThree_display_settings" aria-expanded="false"
+              aria-controls="collapseThree_display_settings">
+              Display Settings
+            </button>
+          </h2>
+        </div>
+        <div id="collapseThree_display_settings" class="collapse" aria-labelledby="heading_display_settings"
+          data-parent="#accordionExample">
+          <div class="card-body">
+            <!-- color controls -->
+            <div class="container">
+              <div class="row">
+                <div class="col-md-auto">
+                  <input type="color" name="background" id="canvas_background" value="#4393a5">
+                  <label for="background">Background</label>
+                </div>
+                <div class="col-md-auto">
+                  <input type="color" name="lines" id="canvas_lines" value="#b1ffff">
+                  <label for="lines">Line</label>
+                </div>
+                <div class="col-md-auto">
+                  <input type="color" name="vector" id="canvas_vector" value="#b1ffff">
+                  <label for="vector">Vector</label>
+                </div>
+                <div class="col-md-auto">
+                  <input type="color" name="small_circles" id="canvas_circles" value="#b1ffff">
+                  <label for="small_circles">Circle</label>
+                </div>
+                <div class="col-md-auto">
+                  <input type="color" name="grid" id="canvas_grid" value="#000000">
+                  <label for="small_circles">Grid</label>
+                </div>
+                <div class="col-md-auto">
+                  <label>
+                    <input type="checkbox" id="canvas_draw_circle" checked="checked">
+                    <span>Draw circles?</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+</body>
+<script src="fourierSeries.js"></script>
+
+</html>

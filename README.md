@@ -1,2 +1,22 @@
-# Fourier_Series_Visualizer
-Small tool to visualize fourier series with different waveforms for Windows, macOS and Linux.
+# Fourier Series Visualizer
+Small tool to visualize Fourier series with different waveforms for Windows, macOS and Linux. Fourier series algorithm is written in JavaScript and runs in an Electron App with Bootstrap as front-end library.
+
+<img src="/doc/macOS.png" alt="pcb" width="500px"/>
+
+On macOS Touch Bar support is available.
+
+<img src="/doc/TouchBar1.png" alt="pcb" width="500px"/>
+
+<img src="/doc/TouchBar2.png" alt="pcb" width="500px"/>
+
+
+## Installation
+To run the app, simply download the desired release for your operating system. Unzip the file and run the following files depending on your OS:
+* Windows: fourier_series_app.exe
+* macOS: fourier_series_app.app
+* Linux: fourier_series_app
+
+## References
+* [The Coding Train: Coding Chanllenge #125 Fourier Series](https://thecodingtrain.com/CodingChallenges/125-fourier-series.html)
+* [Electron](https://electronjs.org/)
+* [Bootstrap](https://getbootstrap.com/)
