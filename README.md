@@ -9,6 +9,8 @@ On macOS Touch Bar support is available.
 
 <img src="/doc/TouchBar2.png" alt="pcb"/>
 
+## Preview
+You can open the app as well in your brower with this [link](https://christophjurczyk.github.io/Fourier_Series_Visualizer/fourierSeries.html).
 
 ## Installation
 To run the app, simply download the desired release for your operating system. Unzip the file and run the following files depending on your OS:
